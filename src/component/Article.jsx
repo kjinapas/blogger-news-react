@@ -6,7 +6,7 @@ import axios from 'axios'
 export function Article() {
 
     const [article, set_article] = useState([])
-    const [thainews, set_thainews] = useState([])
+
 
     async function get_article() {
         const articles = await axios.get('https://next-sample-api-roan.vercel.app/api/sample/thai/news/8')
@@ -15,12 +15,7 @@ export function Article() {
 
     }
 
-    async function get_thainews() {
-        const thainews = await axios.get(`https://newsapi.org/v2/top-headlines?country=th&apiKey=998063d57fdc42cc85b1183f6cefbbc1`)
-        return thainews.data.articles
-
-
-    }
+   
 
     useEffect(() => {
         async function fetchArticle() {
@@ -29,55 +24,16 @@ export function Article() {
 
 
         }
-        async function fetch_thainews() {
-            const thainews = await get_thainews()
-            set_thainews(thainews)
-        }
+      
         fetchArticle()
-        fetch_thainews()
+      
 
     }
         , [])
     return (
 
         <>
-            <div className="md:col-span-1 ">
-                <Card>
-                    <CardHeader>
-                        <Heading size='md'>Thai News Daily</Heading>
-                    </CardHeader>
-                    {thainews.slice(0,10).map((thainew, index) => (
-
-
-
-                        <CardBody>
-                            <Stack key={index} divider={<StackDivider />} spacing='4'>
-                                <Box>
-                                    <Heading size='md' textTransform='uppercase'>
-                                        {thainew.author}
-                                    </Heading>
-                                    <Text pt='2' fontSize='sm' className='font-bold' >
-                                        วันที่ :{thainew.publishedAt}
-                                        
-                                    </Text>
-                                    <Text pt='2'py='2' fontSize='md'>
-                                        ข่าว : {thainew.title}
-                                        
-                                    </Text>
-                                  
-                                    
-                                    <Button colorScheme='teal' size='xs'>
-                                        
-                                        <a href={thainew.url}target='_blank'>read more...</a>
-                                        
-                                    </Button>
-                                </Box>
-                            </Stack>
-                        </CardBody>
-
-                    ))}
-                </Card>
-            </div>
+            
 
 
 
