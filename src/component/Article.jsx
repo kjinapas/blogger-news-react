@@ -3,10 +3,11 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Button, I
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 
+
 export function Article() {
 
     const [article, set_article] = useState([])
-
+    const [showmore,showless] = useState(false)
 
     async function get_article() {
         const articles = await axios.get('https://next-sample-api-roan.vercel.app/api/sample/thai/news/8')
@@ -15,14 +16,10 @@ export function Article() {
 
     }
 
-   
-
     useEffect(() => {
         async function fetchArticle() {
             const data = await get_article();
             set_article(data);
-
-
         }
       
         fetchArticle()
@@ -37,7 +34,7 @@ export function Article() {
 
 
 
-            <div className="md:col-span-1">
+            <div className="md:col-span-2">
                 <Card>
 
                     <CardHeader>
@@ -60,15 +57,18 @@ export function Article() {
                             <Stack>
                                 <CardBody>
                                     <Heading size='sm'>{content.date}</Heading>
-                                    <Text py='2' size='md'>
+                                    <Text py='2' size='md' className=' font-bold'>
                                         {content.title}
                                     </Text>
-                                    <Tag>{content.category}</Tag>
-                                    <div className='my-3'>
+                                  
+                                    <div className='my-2 '>
+                                    {showmore ? content.detail : `${content.detail.substring(0, 200)}...`}
                                     <Button colorScheme='teal' size='sm'>
-                                        อ่านต่อ...
+                                        <a href={content.url} target="_blank">อ่านต่อ</a>
                                     </Button>
+                              
                                     </div>
+                                    <Tag className='mt-2'>{content.category}</Tag>
                                 </CardBody>
                               
                             </Stack>

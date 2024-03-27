@@ -1,30 +1,24 @@
-import React from 'react'
-import { useState } from 'react';
+import React from "react"
 export default function Navbar_header() {
-
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
   return (
-    <header className="bg-blue-800 text-white py-4 px-4">
-    <div className="container mx-auto flex justify-between items-center px-4 md:px-0">
-        <h1 className="text-2xl font-bold">Daily Article & News</h1>
-        <button
-            className="block md:hidden text-white hover:text-gray-300 focus:outline-none"
-            onClick={toggleMenu}
-        >
-            {isMenuOpen ? 'Close' : 'Menu'}
-        </button>
-        <nav className={`md:flex ${isMenuOpen ? 'block' : 'hidden'}`}>
-            <a href="/" className="text-white hover:underline ml-4">Home</a>
-            <a href="#" className="text-white hover:underline ml-4">Articles</a>
-            <a href="#" className="text-white hover:underline ml-4">About</a>
-            <a href="#" className="text-white hover:underline ml-4">Contact</a>
-        </nav>
+    <nav className="bg-gray-800 p-4">
+    <div className="flex justify-between items-center">
+      <div className="text-white font-bold text-lg">Article</div>
+      <ul className="flex space-x-4">
+        <li>
+          <a href="#" className="text-white hover:text-gray-300">Home</a>
+        </li>
+        <li>
+          <a href="#" className="text-white hover:text-gray-300">About</a>
+        </li>
+        <li>
+          <a href="#" className="text-white hover:text-gray-300">Services</a>
+        </li>
+        <li>
+          <a href="#" className="text-white hover:text-gray-300">Contact</a>
+        </li>
+      </ul>
     </div>
-</header>
+  </nav>
   )
 }
