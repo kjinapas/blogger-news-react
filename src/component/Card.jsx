@@ -1,10 +1,10 @@
 import React from 'react'
-import  { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Button, Image,Box,StackDivider }from '@chakra-ui/react';
+import  { Card, CardHeader, CardBody, Stack,Tag,Heading, Text, Button, Image,Box,StackDivider }from '@chakra-ui/react';
 import axios from 'axios'
 
 import { useState, useEffect } from 'react';
 export default function () {
-
+    
     const [News, setNews] = useState([])
 
     async function get_News() {
@@ -24,7 +24,7 @@ export default function () {
     // console.log(News)
     return (
         <div>
-            <div className=" xl:col-span-1 md:col-span-1 hidden md:block ">
+            <div className=" xl:col-span-1 md:col-span-1 ">
                 <div className="bg-white shadow-md p-6">
                     <h2 className="text-xl font-bold mb-4">บทความเก่า </h2>
                     <ul>
@@ -37,9 +37,10 @@ export default function () {
                                     overflow='hidden'
                                     variant='outline'
                                 >
-                                    <Image
+                                    <Image className='hidden md:block'
                                         objectFit='cover'
-                                        maxW={{ base: '100%', sm: '200px' ,xl:'40%'}}
+                                        maxH={{ base: '60%', sm: '200px' ,}}
+                                        maxW={{ base: '60%', sm: '200px' ,}}
                                         src={news.image_url}
                                        
                                     />
@@ -49,13 +50,9 @@ export default function () {
                                         <Text py='1'size='sm'>
                                             {news.date}
                                             </Text>
-                                            <Text py='2'size='md'>
-                                            หมวด : {news.category}
-                                            </Text>
-                                            <Heading size='sm'>{news.title}</Heading>
-
-                                            
-                                            <Text py='1'size='sm'>
+                                            <Heading py='1' size='sm'>{news.title}</Heading>
+                                            <Tag>{news.category} </Tag>                                            
+                                            <Text py='2'size='sm'>
                                             ที่มา : {news.source}
                                             </Text>
                                             <Button variant='solid' colorScheme='blue'>

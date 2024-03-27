@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Button, Image, Box, StackDivider } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Button, Image, Box, StackDivider,Tag} from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 
@@ -62,11 +62,13 @@ export function Article() {
                                     <Heading size='sm'>{content.date}</Heading>
                                     <Text py='2' size='md'>
                                         {content.title}
-                                      category :{content.category}
                                     </Text>
-                                    <Button variant='solid' colorScheme='blue'>
+                                    <Tag>{content.category}</Tag>
+                                    <div className='my-3'>
+                                    <Button colorScheme='teal' size='sm'>
                                         อ่านต่อ...
                                     </Button>
+                                    </div>
                                 </CardBody>
                               
                             </Stack>
