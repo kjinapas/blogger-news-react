@@ -45,7 +45,7 @@ export function Article() {
                     </CardHeader>
                     {article.map((content, index) => (
 
-                        <Card
+                        <Card  key={index}
                             direction={{ base: 'column', sm: 'row' }}
                             overflow='hidden'
                             variant='outline'
