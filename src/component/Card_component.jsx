@@ -31,7 +31,7 @@ export default function Card_component () {
        
             <div className=" xl:col-span-1 md:col-span-2k">
                 <div className="bg-white shadow-md p-4">
-                    <h2 className="text-xl font-bold mb-4">บทความเก่า </h2>
+                    <h2 className="text-xl font-bold mb-4">Old Article</h2>
                     {loading?<Progress size='xs' isIndeterminate />:
                     <ul>
                         {News.map((news, index) => (

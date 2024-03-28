@@ -5,7 +5,7 @@ import './index.css'
 import { ChakraProvider } from '@chakra-ui/react'
 import Blog from './component/Blog.jsx'
 import Article from './component/Article.jsx'
-
+import All_blog from './component/All_blog.jsx'
 
 import {
   createBrowserRouter,
@@ -27,6 +27,19 @@ const router = createBrowserRouter([
     path:"/article/:id",
     element:<Article_content/>
   },
+  {
+    path:"/blogs",
+    element:<All_blog/>
+  },
+  {
+    path:"/blogs/article/:id",
+    element:<All_blog/>
+  },
+  {
+    path:"/blogs/blog/:id",
+    element:<Blog/>
+  }
+
 
 ]);
 
