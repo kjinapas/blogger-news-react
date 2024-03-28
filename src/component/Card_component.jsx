@@ -1,11 +1,13 @@
 import React from 'react'
 import { Card, CardHeader, CardBody, Stack, Tag, Heading, Text, Button, Image, Box, StackDivider } from '@chakra-ui/react';
 import axios from 'axios'
-
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-export default function () {
+import { Progress } from '@chakra-ui/react'
+export default function Card_component () {
 
     const [News, setNews] = useState([])
+    const[loading,isloading] = useState(true)
 
     async function get_News() {
         const Get_new = await axios.get('https://next-sample-api-roan.vercel.app/api/sample/thai/article/8')
@@ -15,18 +17,22 @@ export default function () {
     }
     useEffect(() => {
         async function fetchData() {
+            
             const data = await get_News();
+            
             setNews(data);
+            isloading(false)
         }
 
         fetchData();
     }, []);
-    // console.log(News)
     return (
-        <div>
-            <div className=" xl:col-span-1 md:col-span-1 ">
+        <>
+       
+            <div className=" xl:col-span-1 md:col-span-2 hidden md:block">
                 <div className="bg-white shadow-md p-4">
                     <h2 className="text-xl font-bold mb-4">บทความเก่า </h2>
+                    {loading?<Progress size='xs' isIndeterminate />:
                     <ul>
                         {News.map((news, index) => (
 
@@ -40,7 +46,8 @@ export default function () {
                                     <Image
                                         objectFit='cover'
 
-                                        maxW={{ base: '100%', sm: '200px', }}
+                                        maxW={{ base: '100%', sm: '200px', xl:'200px'}}
+                            
                                         src={news.image_url}
 
                                     />
@@ -54,13 +61,13 @@ export default function () {
                                             <Text py='2' size='sm'>
                                                 ที่มา : {news.source}
                                             </Text>
-                                            <Tag>{news.category} </Tag>
+                                          
 
-                                            <a href={news.url} target='_blank'>
+                                            <Link to={`blog/${index}`} >
                                                 <Button colorScheme='teal' size='sm'>
                                                     อ่าน
                                                 </Button>
-                                            </a>
+                                            </Link>
 
 
                                         </CardBody>
@@ -70,10 +77,12 @@ export default function () {
                             </li>
 
                         ))}
-
+                           
                     </ul>
+                    }
                 </div>
             </div>
-        </div>
+         
+       </>
     )
 }
