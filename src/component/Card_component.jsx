@@ -29,7 +29,7 @@ export default function Card_component () {
     return (
         <>
        
-            <div className=" xl:col-span-1 md:col-span-2 hidden md:block">
+            <div className=" xl:col-span-1 md:col-span-2k">
                 <div className="bg-white shadow-md p-4">
                     <h2 className="text-xl font-bold mb-4">บทความเก่า </h2>
                     {loading?<Progress size='xs' isIndeterminate />:

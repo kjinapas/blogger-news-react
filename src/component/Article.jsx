@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter, Stack, Heading, Text, Button, I
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Progress } from '@chakra-ui/react'
-
+import { Link } from 'react-router-dom';
 
 export default function Article() {
 
@@ -35,9 +35,6 @@ export default function Article() {
 
         <>
             
-
-
-
             <div className="md:col-span-2">
           
                    
@@ -74,7 +71,7 @@ export default function Article() {
                                     <div className='my-2 '>
                                     {showmore ? content.detail : `${content.detail.substring(0, 200)}  ...  `}
                                     <Button colorScheme='teal' size='sm'>
-                                        <a href={content.url} target="_blank">อ่านต่อ</a>
+                                        <Link to={`article/${index}`}>อ่านต่อ</Link>
                                     </Button>
                               
                                     </div>
