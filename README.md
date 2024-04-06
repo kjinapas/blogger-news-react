@@ -1,5 +1,7 @@
 # React + Vite
 # DEMO [https://blogger-news-react.vercel.app/]
+## ใข้ api จาก สำนักงานพัฒนารัฐบาลดิจิทัล (องค์การมหาชน) หรือ สพร
+link [https://data.go.th/]
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
